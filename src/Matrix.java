@@ -37,4 +37,31 @@ public class Matrix {
 		super();
 		this.matrix = matrix;
 	}
+
+	/**
+	 * This method checks the existence of the given words in the matrix by applying depth first search
+     * @param matrix the given matrix
+     * @return Boolean
+     * @author Noei
+     */
+	public boolean wordExists(String word) {
+        
+		/**
+		 * In case of empty input returns false
+		 */
+		
+		if (word.length() == 0) return false;
+				
+		/**
+		 * The nested loop navigates the given matrix elements and applies depth first search on each of them as a start point
+		 */
+		for (int i=0; i<matrix.length; i++) {
+            for (int j=0; j<matrix[i].length; j++) {
+                if (DFS.search(matrix, i, j, word, 0)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }
